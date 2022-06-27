@@ -57,4 +57,18 @@ contract Exchange is ERC20 {
         return (ethAmount, cryptoDevTokenAmount);
     }
 
+    function getAmountOfTokens(
+     uint256 inputAmount,
+     uint256 inputReserve,
+     uint256 outputReserve) public pure returns(uint256){
+
+        require(inputReserve > 0 && outputReserve > 0, "Insufficient Resourses");
+
+        uint256 inputAmountWithFees = ((inputAmount)*99)/100;
+
+        uint256 numerator = outputReserve * inputAmountWithFees; // Δy = (y * Δx) / (x + Δx)
+        uint256 denomirator = inputReserve + inputAmountWithFees;
+
+        return numerator / denomirator;
+    }
 }
