@@ -71,4 +71,22 @@ contract Exchange is ERC20 {
 
         return numerator / denomirator;
     }
+
+    function ethToCryptoDevToken(uint256 _minTokens) public payable {
+        uint256 tokenReserve = getReserves();
+
+        uint256 tokensBought = getAmountOfTokens(msg.value, address(this).balance - msg.value , tokenReserve);
+
+        require(tokensBought >= _minTokens, "Insuffient Balance!");
+        ERC20(cryptoDevTokenAddress).transfer(msg.sender, tokensBought);
+    }
+
+    function cryptoDevTokenToEth(uint256 _tokensSold, uint _minTokens) public payable {
+        uint256 tokenReserve = getReserves();
+
+        uint256 ethBought = getAmountOfTokens(_tokensSold, tokenReserve, address(this).balance);
+
+        require(ethBought >= _minTokens, "Insuffient Balance!");
+        payable(msg.sender).transfer(ethBought); 
+    }
 }
