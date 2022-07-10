@@ -9,7 +9,8 @@ module.exports = {
   networks: {
     rinkeby : {
       url : ALCHEMY_API_KEY_URL,
-      account : [RINKEBY_PRIVATE_KEY]
+      accounts : [RINKEBY_PRIVATE_KEY]
     },
   },
 };
+// 0xA1fb96b9c6d64a75F363f3011FC5708D08e68E9C
