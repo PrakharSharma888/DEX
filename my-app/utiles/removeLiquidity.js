@@ -13,6 +13,7 @@ export const removeLiquidity = async (
     );
     const tx = await exchangeContract.removeLiquidity(removeLPTokensWei);
     await tx.wait();
+    window.alert("Liqudity Removed Successfully!")
 }
 
 export const getTokensAfterRemove = async (

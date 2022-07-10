@@ -331,7 +331,7 @@ const renderButton = () =>{
 }
 
 return (
-  <div>
+  <div className={styles.body}>
     <Head>
       <title>Decentralized Exchange</title>
     </Head>

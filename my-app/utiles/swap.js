@@ -67,4 +67,5 @@ export const swapTokens = async (
         )
     }
     await tx.wait();
+    window.alert("Tokens Swapped!")
 }

@@ -30,12 +30,12 @@ export const addLiquidity = async (
             addCDAmountWei.toString()
         );
         await tx.wait()
-
+        
         tx = await exchangeContract.addLiquidity(addCDAmountWei,{
             value : addEthAmountWei
         });
         await tx.wait();
-
+        window.alert("Liqudity Added Successfully!")
     }catch (error) {
         console.log(error)
         }
